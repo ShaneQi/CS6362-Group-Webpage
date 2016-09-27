@@ -1,0 +1,91 @@
+<html lang="en" ng-app="teamC3" ng-controller="IndexController as controller">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Angular Material style sheet -->
+		<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+		<style>.fa { font-size: 24px; }></style>
+	</head>
+	<body layout="row">
+		<md-sidenav class="md-sidenav-left md-hue-2 c3sidenav" md-whiteframe="4" flex="25" md-is-locked-open="true" md-colors="{background: 'primary'}" layout="column">
+			<h1 class="md-display-1 c3-sidenav-logo" layout="row">
+				<div flex></div>
+				Team C3
+				<div flex></div>
+			</h1>
+			<md-list>
+				<md-list-item href="" ng-repeat="member in members" layout="row" layout-align=" center">
+					<div flex></div>
+					{{ member.name }} - {{ member.netid }}
+					<div flex></div>
+				</md-list-item>
+			</md-list>
+			<md-list>
+				<md-list-item ng-repeat="title in projectTitles" ng-click="switchProject($index)">
+					<div flex></div>
+					<h1 class="md-headline c3-sidenav-">{{title}}</h1>
+					<div flex></div>
+				</md-list-item>
+			</md-list>
+
+		</md-sidenav>
+
+		<div flex layout="column">
+			<md-toolbar layout="row">
+				<div class="md-toolbar-tools">
+					<div flex>
+						{{projectTitles[project]}}
+					</div>
+					<div layout="row" layout-align="end center" layout-margin>
+						<md-button class="md-icon-button c3-toolbar-icon" href="https://drive.google.com/open?id=0B48nyVZjNN0TQ2pCblM5U1VFeUE" target="_blank">
+							<md-icon md-font-set="material-icons">&#xe24d</md-icon>
+						</md-button>
+						<md-button class="md-icon-button c3-toolbar-icon" href="https://github.com/siosilvar/kwac-index" target="_blank">
+							<md-icon md-font-set="fa">&#xf09b</md-icon>
+						</md-button>
+					</div>
+				</div>
+			</md-toolbar>
+
+			<md-content ng-style="{'padding-right': '20px'}">
+
+			<md-subheader class="md-primary">MEETINGS</md-subheader>
+
+			<md-grid-list md-cols="6" md-row-height="4:1" md-gutter="12px" layout-margin>
+				<md-grid-tile md-rowspan="4" md-colspan="2" ng-repeat="meeting in meetings">
+					<md-card layout-fill>
+						<md-card-title>
+							<md-card-title-text>
+								<span class="md-headline">{{meeting.title}}</span>
+								<span class="md-body-2">{{meeting.sub_title}}</span>
+								<span class="md-body-1">{{meeting.content}}</span>
+							</md-card-title-text>
+						</md-card-title>
+					</md-card>
+				</md-grid-tile>
+
+
+
+			</md-grid-list>
+			</md-content>
+
+		</div>
+
+
+
+		<!-- Angular Material requires Angular.js Libraries -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+
+		<!-- Angular Material Library -->
+		<script src="http://ajax.googleapis.com/ajax/libs/angular_material/1.1.1/angular-material.min.js"></script>
+
+		<!-- Your application bootstrap  -->
+		<script src="./app.js"></script>
+
+	</body>
+</html>
